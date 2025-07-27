@@ -9,3 +9,9 @@ exports.onCreateWebpackConfig = ( { actions } ) => {
     },
   })
 }
+
+exports.onCreatePage = ({ page, actions }) => {
+  if (page.path === '/login/') {
+    actions.deletePage(page)
+  }
+}

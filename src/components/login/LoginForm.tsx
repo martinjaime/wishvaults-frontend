@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { navigate } from 'gatsby';
+import { Button } from 'components/Button';
+import FormGroup from 'components/FormGroup';
+import Input from 'components/Input';
+import PasswordField from 'components/PasswordField';
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -37,43 +41,37 @@ const LoginForm: React.FC = () => {
           </div>
         )}
 
-        <div className="form-field">
-          <label htmlFor="email" className="form-label">
-            email
-          </label>
-          <input
+        <FormGroup>
+          <Input
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-input"
+            onChange={setEmail}
             placeholder="your@email.com"
+            label="email"
             disabled={loading}
           />
-        </div>
+        </FormGroup>
 
-        <div className="form-field">
-          <label htmlFor="password" className="form-label">
-            password
-          </label>
-          <input
+        <FormGroup>
+          <PasswordField
             id="password"
-            type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-input"
+            onChange={setPassword}
             placeholder="enter your password"
+            label="password"
             disabled={loading}
           />
-        </div>
+        </FormGroup>
 
-        <button
+        <Button
           type="submit"
-          className="btn btn-primary form-submit"
+          variant="primary"
           disabled={loading}
+          className="form-submit"
         >
-          {loading ? 'signing in...' : 'sign In'}
-        </button>
+          {loading ? 'signing in...' : 'sign in'}
+        </Button>
       </form>
     </div>
   );

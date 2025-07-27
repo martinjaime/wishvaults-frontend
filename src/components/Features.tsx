@@ -1,4 +1,40 @@
 import React from 'react';
+import { styled } from 'styled-components';
+
+const FeaturesDiv = styled.div`
+  display: grid;
+  gap: 32px;
+  margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+`;
+
+const FeatureDiv = styled.div`
+  text-align: center;
+  padding: 0 16px;
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+`;
+
+const FeatureIcon = styled.div`
+  font-size: 2rem;
+  margin-bottom: 16px;
+`;
 
 interface FeatureProps {
   icon: string;
@@ -8,11 +44,11 @@ interface FeatureProps {
 
 const Feature: React.FC<FeatureProps> = ({ icon, title, description }) => {
   return (
-    <div className="feature">
-      <div className="feature-icon">{icon}</div>
+    <FeatureDiv>
+      <FeatureIcon>{icon}</FeatureIcon>
       <h3>{title}</h3>
       <p>{description}</p>
-    </div>
+    </FeatureDiv>
   );
 };
 
@@ -36,7 +72,7 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <div className="features">
+    <FeaturesDiv>
       {features.map((feature, index) => (
         <Feature
           key={index}
@@ -45,7 +81,7 @@ const Features: React.FC = () => {
           description={feature.description}
         />
       ))}
-    </div>
+     </FeaturesDiv>
   );
 };
 

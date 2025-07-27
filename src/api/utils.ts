@@ -1,10 +1,6 @@
-export const API_BASE_URL = process.env.GATSBY_API_URL || 'http://localhost:9000';
+import { getToken } from "./auth";
 
-export interface ApiResponse<T> {
-  data?: T;
-  error?: string;
-  message?: string;
-}
+export const API_BASE_URL = process.env.GATSBY_API_URL || 'http://localhost:9000';
 
 export class ApiError extends Error {
   status: number;
@@ -35,7 +31,7 @@ export const apiRequest = async <T>(
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new ApiError(
-        errorData.message || `HTTP error! status: ${response.status}`,
+        errorData.error || `Unexpected HTTP error! status: ${response.status}`,
         response.status
       );
     }
@@ -51,14 +47,16 @@ export const apiRequest = async <T>(
 
 export const apiRequestWithAuth = async <T>(
   endpoint: string,
-  token: string,
   options: RequestInit = {}
 ): Promise<T> => {
+  const token = getToken();
+
   return apiRequest<T>(endpoint, {
     ...options,
     headers: {
       ...options.headers,
-      Authorization: `Bearer ${token}`,
+      // let the server handle the case where the token is not set lol
+      Authorization: `Bearer ${token || ''}`,
     },
   });
 };

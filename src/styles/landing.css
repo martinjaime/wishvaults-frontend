@@ -86,51 +86,6 @@
   margin-bottom: 64px;
 }
 
-.btn {
-  display: block;
-  padding: 16px 32px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-align: center;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px var(--shadow);
-  border: none;
-  cursor: pointer;
-  min-height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-primary {
-  background: var(--accent-primary);
-  color: #ffffff;
-}
-
-.btn-primary:hover {
-  background: var(--accent-secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow);
-}
-
-.btn-secondary {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 2px solid var(--border-light);
-}
-
-.btn-secondary:hover {
-  background: var(--bg-secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
 .features {
   display: grid;
   gap: 32px;

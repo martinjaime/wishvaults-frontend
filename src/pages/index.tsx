@@ -7,8 +7,8 @@ export default LandingLayout;
 
 export const Head = () => (
   <>
-    <title>WishVaults - Create Wishlists Instantly</title>
-    <meta name="description" content="Create and share wishlists instantly. No account required. Password protection available." />
+    <title>wishvaults - Create Wishlists Instantly</title>
+    <meta name="description" content="Create and share wishlists instantly. No account required." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </>
 );
