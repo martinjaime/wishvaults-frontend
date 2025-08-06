@@ -1,6 +1,7 @@
-import { getToken } from "./auth";
+import { getToken } from "backend-api/auth";
+import { ErrorResponse } from "types/error";
 
-export const API_BASE_URL = process.env.GATSBY_API_URL || 'http://localhost:9000';
+export const API_BASE_URL = 'http://localhost:9000';
 
 export class ApiError extends Error {
   status: number;
@@ -29,7 +30,7 @@ export const apiRequest = async <T>(
     const response = await fetch(url, config);
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
+      const errorData = await response.json().catch(() => ({})) as ErrorResponse;
       throw new ApiError(
         errorData.error || `Unexpected HTTP error! status: ${response.status}`,
         response.status

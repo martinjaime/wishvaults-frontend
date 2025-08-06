@@ -1,5 +1,5 @@
-import { setToken } from "api/auth"
-import { apiRequest } from "api/utils"
+import { setToken } from "backend-api/auth"
+import { apiRequest } from "backend-api/utils"
 import { AnonymousListCreatedPayload } from "types/auth"
 import { NewWishlistDTO, WishlistInfo } from "types/wishlist"
 
