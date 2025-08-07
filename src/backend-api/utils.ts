@@ -1,7 +1,7 @@
 import { getToken } from "backend-api/auth";
 import { ErrorResponse } from "types/error";
 
-export const API_BASE_URL = 'http://localhost:9000';
+export const API_BASE_URL = process.env.GATSBY_API_URL || 'http://localhost:9000';
 
 export class ApiError extends Error {
   status: number;
